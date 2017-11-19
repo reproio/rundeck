@@ -161,6 +161,27 @@ if [ ! -f "${initfile}" ]; then
       echo "rundeck.projectsStorageType=db" >> /etc/rundeck/rundeck-config.properties
    fi
 
+   # ldap
+   if [[ -n "${LDAP_PROVIDER_URL}" ]]; then
+      sed -i 's! providerUrl=.*! providerUrl="'${LDAP_PROVIDER_URL}'"!' /opt/rundeck-defaults/jaas-loginmodule-multiauth.conf
+   fi
+
+   if [[ -n "${LDAP_BIND_DN}" ]]; then
+      sed -i 's! bindDn=.*! bindDn="'${LDAP_BIND_DN}'"!' /opt/rundeck-defaults/jaas-loginmodule-multiauth.conf
+   fi
+
+   if [[ -n "${LDAP_BIND_PASSWORD}" ]]; then
+      sed -i 's! bindPassword=.*! bindPassword="'${LDAP_BIND_PASSWORD}'"!' /opt/rundeck-defaults/jaas-loginmodule-multiauth.conf
+   fi
+
+   if [[ -n "${LDAP_USER_BASE_DN}" ]]; then
+      sed -i 's! userBaseDn=.*! userBaseDn="'${LDAP_USER_BASE_DN}'"!' /opt/rundeck-defaults/jaas-loginmodule-multiauth.conf
+   fi
+
+   if [[ -n "${LDAP_ROLE_BASE_DN}" ]]; then
+      sed -i 's! roleBaseDn=.*! roleBaseDn="'${LDAP_ROLE_BASE_DN}'"!' /opt/rundeck-defaults/jaas-loginmodule-multiauth.conf
+   fi
+
    echo -e "\n\n\n"
    echo "==================================================================="
    if [ "${NO_LOCAL_MYSQL}" == "true" ]; then

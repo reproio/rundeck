@@ -84,3 +84,20 @@ See: http://rundeck.org/docs/administration/configuring-ssl.html#using-an-ssl-te
 
 # Upgrading
 See: http://rundeck.org/docs/upgrading/index.html
+
+# Enable LDAP
+
+```
+JAAS_CONF=/opt/rundeck-defaults/jaas-loginmodule-multiauth.conf
+LOGIN_MODULE=multiauth
+```
+
+## LDAP Environment variables
+
+```
+LDAP_PROVIDER_URL
+LDAP_BIND_DN
+LDAP_BIND_PASSWORD
+LDAP_USER_BASE_DN
+LDAP_ROLE_BASE_DN
+```
