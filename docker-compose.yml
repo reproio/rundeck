@@ -1,0 +1,8 @@
+version: '2'
+services:
+  rundeck:
+    build: .
+    ports:
+      - '4440:4440'
+    env_file:
+      - rundeck.env
